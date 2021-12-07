@@ -311,8 +311,8 @@ Here is an example of a basic counter widget:
     });
 
 For this example, assume that the template *some.template* (and is properly
-loaded: the template is in a file, which is properly defined in the *qweb* key
-in the module manifest) is given by:
+loaded: the template is in a file, which is properly defined in the assets of
+the module manifest ``'assets': {'web.assets_qweb': [...]}``) is given by:
 
 .. code-block:: xml
 
