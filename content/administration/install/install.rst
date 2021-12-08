@@ -508,37 +508,27 @@ create a new PostgreSQL user:
 Dependencies
 ^^^^^^^^^^^^
 
-For libraries using native code, it is necessary to install development tools and native
-dependencies before the Python dependencies of Odoo. They are available in `-dev` or `-devel`
-packages for Python, PostgreSQL, libxml2, libxslt1, libevent, libsasl2 and libldap2.
-
-On Debian/Unbuntu, the following command should install all the required libraries:
-
-.. code-block:: console
-
-    $ sudo apt install python3-dev libxml2-dev libxslt1-dev libldap2-dev libsasl2-dev \
-        libtiff5-dev libjpeg8-dev libopenjp2-7-dev zlib1g-dev libfreetype6-dev \
-        liblcms2-dev libwebp-dev libharfbuzz-dev libfribidi-dev libxcb1-dev libpq-dev
-
-Odoo dependencies are listed in the `requirements.txt` file located at the root of the Odoo
-community directory.
-
-.. tip:: It can be preferable to not mix python modules packages between different instances of Odoo
-         or with your system. You can use virtualenv_ to create isolated Python environments.
-
-Navigate to the path of your Odoo Community installation (`CommunityPath`) and run **pip**
-on the requirements file:
+The preferred way of installing dependencies is by using your distribution packages.
+For Debian based systems, those packages are listed in the `debian/control` file of the odoo sources.
+On Debian/Ubuntu, the following commands should install the required packages:
 
 .. code-block:: console
 
     $ cd /CommunityPath
-    $ pip3 install setuptools wheel
-    $ pip3 install -r requirements.txt
+    $ sed -n -e '/^Depends:/,/^Pre/ s/ python3-\(.*\),/python3-\1/p' debian/control | sudo xargs apt-get install -y
 
-.. warning:: `wkhtmltopdf` is not installed through **pip** and must be installed manually in
-             version `0.12.5 <the wkhtmltopdf download page_>`_ for it to support headers and
-             footers. See our `wiki <https://github.com/odoo/odoo/wiki/Wkhtmltopdf>`_ for more
-             details on the various versions.
+.. tip:: It can be preferable to not mix python modules packages between different instances of Odoo
+         or with your system. You can use virtualenv_ to create isolated Python environments.
+         In that case, the `requirements.txt` file can be used to install the dependencies.
+
+.. note:: The python packages in `requirements.txt` are based on their stable/LTS Debian/Ubuntu corresponding version
+          at the moment of the Odoo release.
+          e.g.: For Odoo 15.0, the python3-babel package version is 2.8.0 in Debian Bullseye and 2.6.0 in Ubutnu Focal.
+          The lowest version is then chosen in the `requirements.txt`.
+
+.. warning:: `wkhtmltopdf` must be installed manually in version `0.12.5 <the wkhtmltopdf download page_>`_ 
+             for it to support headers and footers.
+             See our `wiki <https://github.com/odoo/odoo/wiki/Wkhtmltopdf>`_ for more details on the various versions.
 
 For languages with right-to-left interface (such as Arabic or Hebrew), the package `rtlcss` is
 needed:

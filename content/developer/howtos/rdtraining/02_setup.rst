@@ -170,24 +170,16 @@ You can check your Python version with:
 
     $ python3 --version
 
-Install pip3 and libraries
---------------------------
-
-For libraries using native code, installation of development tools and native dependencies is
-required before installing the Python dependencies of Odoo.
-
-.. code-block:: console
-
-    $ sudo apt install python3-pip python3-dev libxml2-dev libxslt1-dev libldap2-dev libsasl2-dev libssl-dev libpq-dev libjpeg-dev
-
-
-Install odoo requirements
+Install required packages
 -------------------------
 
+The preferred way of installing dependencies is by using your distribution packages.
+For Debian based systems, those packages are listed in the `debian/control` file of the odoo sources.
+On Debian/Ubuntu, the following command should install the required packages:
+
 .. code-block:: console
 
-    $ cd $HOME/src/odoo
-    $ pip3 install -r requirements.txt
+    $ sed -n -e '/^Depends:/,/^Pre/ s/ python3-\(.*\),/python3-\1/p' debian/control | sudo xargs apt-get install -y
 
 .. _howto/rdtraining/02_setup/install-wkhtmltopdf:
 
