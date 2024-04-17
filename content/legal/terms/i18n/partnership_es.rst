@@ -114,7 +114,7 @@ número total de clientes de Odoo Enterprise adquiridos por EL COLABORADOR en lo
 +--------------------------------------------------+------------------+--------------------+--------------------+--------------------+
 |                                                  | Learning Partner | Official: Ready    | Official: Silver   | Official: Gold     |
 +==================================================+==================+====================+====================+====================+
-| Nuevos Usuarios netos de Odoo Enterprise         |   0              |  10                | 50                 | 300                |
+| Nuevos Usuarios netos de Odoo Enterprise         |   0              |  10                | 75                 | 300                |
 | vendidos anualmente                              |                  |                    |                    |                    |
 +--------------------------------------------------+------------------+--------------------+--------------------+--------------------+
 | Número de empleados certificados en al menos uno |   0              |  1                 |  3                 |  6                 |
